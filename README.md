@@ -517,7 +517,7 @@ Extend the CI/CD pipeline to **deploy artifacts** (e.g., to a staging server, Do
 
 ### Steps
 
-1. **Prepare Deployment Credentials**
+1. **Prepare Deployment Credentials***
 
    * Store deployment credentials as **GitHub Encrypted Secrets**:
 
