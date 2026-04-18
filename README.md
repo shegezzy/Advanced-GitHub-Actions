@@ -10,31 +10,31 @@ As software projects grow in complexity, effective CI/CD pipelines become critic
 
 ## **Project Goals and Objectives**
 
-* Build maintainable and modular GitHub Actions workflows.
-* Optimize workflow performance through caching and parallelization.
-* Implement security best practices, including secrets management and least privilege principles.
-* Gain hands-on experience in designing professional CI/CD pipelines for real-world projects.
+- Build maintainable and modular GitHub Actions workflows.
+- Optimize workflow performance through caching and parallelization.
+- Implement security best practices, including secrets management and least privilege principles.
+- Gain hands-on experience in designing professional CI/CD pipelines for real-world projects.
 
 ## **Prerequisites**
 
-* Basic knowledge of GitHub Actions and CI/CD concepts.
-* Familiarity with Git, YAML, and command-line interface.
-* Node.js or similar development environment (for demonstration workflows).
+- Basic knowledge of GitHub Actions and CI/CD concepts.
+- Familiarity with Git, YAML, and command-line interface.
+- Node.js or similar development environment (for demonstration workflows).
 
 ## **Project Deliverables**
 
-* Fully structured project directory with necessary files.
-* Reusable and maintainable workflow examples.
-* Optimized and secure GitHub Actions pipelines.
-* Documentation (README.md) with detailed instructions and best practices.
+- Fully structured project directory with necessary files.
+- Reusable and maintainable workflow examples.
+- Optimized and secure GitHub Actions pipelines.
+- Documentation (README.md) with detailed instructions and best practices.
 
 ## **Tools & Technologies Used**
 
-* **GitHub Actions** for CI/CD automation.
-* **Git** for version control.
-* **Node.js** or any target application environment for workflow testing.
-* **YAML** for workflow configuration.
-* **Text Editor/IDE** (VSCode recommended).
+- **GitHub Actions** for CI/CD automation.
+- **Git** for version control.
+- **Node.js** or any target application environment for workflow testing.
+- **YAML** for workflow configuration.
+- **Text Editor/IDE** (VSCode recommended).
 
 ## **Project Components**
 
@@ -106,10 +106,10 @@ advanced-github-actions/
 
 **Notes:**
 
-* `.github/workflows/` contains all workflow files.
-* `images/` can be used for screenshots or workflow diagrams.
-* `README.md` will document all tasks (1–7) and workflow explanations.
-* `.gitignore` ensures unnecessary files like `node_modules/`, logs, or `.env` are excluded from Git.
+- `.github/workflows/` contains all workflow files.
+- `images/` can be used for screenshots or workflow diagrams.
+- `README.md` will document all tasks (1–7) and workflow explanations.
+- `.gitignore` ensures unnecessary files like `node_modules/`, logs, or `.env` are excluded from Git.
 
 ✅ **Task 1 Complete** – The project directory is fully prepared for workflow development and documentation.
 
@@ -137,32 +137,33 @@ name: Basic CI Workflow
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Run setup check
-      run: echo "✅ Repository checked out successfully!"
+      - name: Run setup check
+        run: echo "✅ Repository checked out successfully!"
 
-    - name: Run sample validation
-      run: echo "🚀 Basic CI workflow is running without Node.js dependencies."
+      - name: Run sample validation
+        run: echo "🚀 Basic CI workflow is running without Node.js dependencies."
 ```
 
 3. **Workflow Explanation**
 
-* **Triggers:** Runs automatically on `push` and `pull_request` to the `main` branch.
-* **Jobs:**
+- **Triggers:** Runs automatically on `push` and `pull_request` to the `main` branch.
+- **Jobs:**
 
-  * `build` runs on the latest Ubuntu runner.
-* **Steps:**
+  - `build` runs on the latest Ubuntu runner.
+
+- **Steps:**
 
   1. **Checkout** – Retrieves the repository code.
   2. **Run setup check** – Verifies repository setup.
@@ -181,9 +182,9 @@ git push -u origin main
 
 5. **Verify Workflow**
 
-* Go to your repository on GitHub.
-* Navigate to the **Actions** tab.
-* Confirm the workflow runs successfully when code is pushed or a pull request is created.
+- Go to your repository on GitHub.
+- Navigate to the **Actions** tab.
+- Confirm the workflow runs successfully when code is pushed or a pull request is created.
 
 **Screenshot:** Basic CI Workflow
 ![Basic CI Workflow](./images/1.github_basic_workflow.png)
@@ -244,9 +245,9 @@ Refactor the pipeline to use **reusable workflows** and implement **caching** fo
 
    **Explanation:**
 
-   * `workflow_call` makes the workflow reusable.
-   * `secrets.ACCESS_TOKEN` is required for security checks.
-   * `actions/cache` speeds up builds by caching temporary files.
+   - `workflow_call` makes the workflow reusable.
+   - `secrets.ACCESS_TOKEN` is required for security checks.
+   - `actions/cache` speeds up builds by caching temporary files.
 
 2. **Call the Reusable Workflow**
 
@@ -257,9 +258,9 @@ Refactor the pipeline to use **reusable workflows** and implement **caching** fo
 
    on:
      push:
-       branches: [ main ]
+       branches: [main]
      pull_request:
-       branches: [ main ]
+       branches: [main]
 
    jobs:
      call-basic-checks:
@@ -282,9 +283,9 @@ Refactor the pipeline to use **reusable workflows** and implement **caching** fo
 
    **Explanation:**
 
-   * `call-basic-checks` job invokes the reusable workflow.
-   * `secrets.ACCESS_TOKEN` is passed securely.
-   * The `build` job runs additional validations.
+   - `call-basic-checks` job invokes the reusable workflow.
+   - `secrets.ACCESS_TOKEN` is passed securely.
+   - The `build` job runs additional validations.
 
 3. **Commit and Push**
 
@@ -309,8 +310,8 @@ Enhance the pipeline’s security by properly managing secrets, applying least p
 
 1. **Store Secrets in GitHub**
 
-   * Go to **Settings → Secrets and variables → Actions → New repository secret**.
-   * Add:
+   - Go to **Settings → Secrets and variables → Actions → New repository secret**.
+   - Add:
 
      | Name         | Value               |
      | ------------ | ------------------- |
@@ -318,8 +319,8 @@ Enhance the pipeline’s security by properly managing secrets, applying least p
 
    **Explanation:**
 
-   * Secrets are encrypted and not exposed in logs.
-   * Never hardcode sensitive values in workflows.
+   - Secrets are encrypted and not exposed in logs.
+   - Never hardcode sensitive values in workflows.
 
 2. **Use Secrets in Workflows**
 
@@ -342,29 +343,29 @@ Enhance the pipeline’s security by properly managing secrets, applying least p
 
    **Explanation:**
 
-   * Secrets flow securely between workflows.
-   * The `ACCESS_TOKEN` secret is verified before jobs proceed.
+   - Secrets flow securely between workflows.
+   - The `ACCESS_TOKEN` secret is verified before jobs proceed.
 
 3. **Apply Least Privilege**
 
-   * Go to **Settings → Actions → General → Workflow permissions**.
-   * Select **Read repository contents permission** unless write access is required.
+   - Go to **Settings → Actions → General → Workflow permissions**.
+   - Select **Read repository contents permission** unless write access is required.
 
    **Explanation:**
 
-   * Grants only what’s necessary.
-   * Reduces potential attack surface.
+   - Grants only what’s necessary.
+   - Reduces potential attack surface.
 
 4. **Audit and Monitor Workflow Runs**
 
-   * Go to the **Actions** tab.
-   * Regularly review workflow logs for unusual activity.
-   * Enable **required reviews** for workflow changes if multiple collaborators exist.
+   - Go to the **Actions** tab.
+   - Regularly review workflow logs for unusual activity.
+   - Enable **required reviews** for workflow changes if multiple collaborators exist.
 
    **Explanation:**
 
-   * Detects misconfigurations or malicious code early.
-   * Ensures accountability for workflow changes.
+   - Detects misconfigurations or malicious code early.
+   - Ensures accountability for workflow changes.
 
 5. **Commit and Push Changes**
 
@@ -378,9 +379,9 @@ Enhance the pipeline’s security by properly managing secrets, applying least p
 
 6. **Verify Implementation**
 
-   * Ensure workflows run successfully.
-   * Confirm secrets are received without being printed in logs.
-   * Verify repository permissions are minimized.
+   - Ensure workflows run successfully.
+   - Confirm secrets are received without being printed in logs.
+   - Verify repository permissions are minimized.
 
 **Screenshot:** Basic Checks Workflow Security Implementation
 ![Basic Checks Workflow](./images/3.basic_checks_add_security.png)
@@ -404,9 +405,9 @@ Improve the efficiency and speed of your CI/CD pipelines by **running jobs in pa
 
    on:
      push:
-       branches: [ main ]
+       branches: [main]
      pull_request:
-       branches: [ main ]
+       branches: [main]
 
    jobs:
      lint:
@@ -437,9 +438,9 @@ Improve the efficiency and speed of your CI/CD pipelines by **running jobs in pa
 
    **Explanation:**
 
-   * `lint` and `test` jobs run **in parallel**.
-   * `call-basic-checks` can run independently or sequentially depending on your needs.
-   * Parallel execution reduces overall workflow runtime.
+   - `lint` and `test` jobs run **in parallel**.
+   - `call-basic-checks` can run independently or sequentially depending on your needs.
+   - Parallel execution reduces overall workflow runtime.
 
 2. **Use a Job Matrix for Multiple Environments**
 
@@ -467,9 +468,9 @@ Improve the efficiency and speed of your CI/CD pipelines by **running jobs in pa
 
    **Explanation:**
 
-   * The job runs once for each Node.js version.
-   * Ensures your project works across multiple runtime environments.
-   * Saves setup time using caching.
+   - The job runs once for each Node.js version.
+   - Ensures your project works across multiple runtime environments.
+   - Saves setup time using caching.
 
 3. **Optimize Caching**
 
@@ -487,8 +488,8 @@ Improve the efficiency and speed of your CI/CD pipelines by **running jobs in pa
 
    **Explanation:**
 
-   * Dependencies are restored quickly, avoiding repeated installs.
-   * Cache key is based on `package-lock.json` to update only when dependencies change.
+   - Dependencies are restored quickly, avoiding repeated installs.
+   - Cache key is based on `package-lock.json` to update only when dependencies change.
 
 4. **Commit and Push Changes**
 
@@ -500,9 +501,9 @@ git push origin main
 
 5. **Verify in GitHub**
 
-* Check that jobs run **in parallel**.
-* Confirm matrix jobs execute for each environment.
-* Ensure caching reduces execution time.
+- Check that jobs run **in parallel**.
+- Confirm matrix jobs execute for each environment.
+- Ensure caching reduces execution time.
 
 **Screenshot:** Add parallel jobs, matrix testing, and improved caching
 ![Add parallel jobs, matrix testing, and improved caching](./images/4.build.yml_add_parallel_jobs.png)
@@ -517,9 +518,9 @@ Extend the CI/CD pipeline to **deploy artifacts** (e.g., to a staging server, Do
 
 ### Steps
 
-1. **Prepare Deployment Credentials***
+1. **Prepare Deployment Credentials\***
 
-   * Store deployment credentials as **GitHub Encrypted Secrets**:
+   - Store deployment credentials as **GitHub Encrypted Secrets**:
 
      | Name        | Value                    |
      | ----------- | ------------------------ |
@@ -529,64 +530,64 @@ Extend the CI/CD pipeline to **deploy artifacts** (e.g., to a staging server, Do
 
    **Explanation:**
 
-   * Secrets are used securely in workflows to avoid exposing sensitive information.
+   - Secrets are used securely in workflows to avoid exposing sensitive information.
 
 2. **Add Deployment Job in `build.yml`**
 
    Inside `.github/workflows/build.yml`, add a new job **after your test jobs**:
 
 ```yaml
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [lint, test, call-basic-checks] # Ensure deployment runs after checks
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+deploy:
+  runs-on: ubuntu-latest
+  needs: [lint, test, call-basic-checks] # Ensure deployment runs after checks
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+    - name: Set up SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
 
-      - name: Add server to known_hosts
-        run: ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+    - name: Add server to known_hosts
+      run: ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to Server
-        run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
-          cd /path/to/deploy/directory &&
-          git pull origin main &&
-          ./deploy_script.sh
-          "
+    - name: Deploy to Server
+      run: |
+        ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
+        cd /path/to/deploy/directory &&
+        git pull origin main &&
+        ./deploy_script.sh
+        "
 ```
 
 **Explanation:**
 
-* Uses SSH to securely deploy code to a remote server.
-* `needs` ensures deployment only happens **after checks pass**.
+- Uses SSH to securely deploy code to a remote server.
+- `needs` ensures deployment only happens **after checks pass**.
 
 3. **Add Notifications via Email or Slack**
 
    Example: Slack notification using `slackapi/slack-github-action`:
 
 ```yaml
-  notify:
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - name: Send Slack Notification
-        uses: slackapi/slack-github-action@v1.26.0
-        with:
-          channel-id: 'C0123456789'
-          slack-token: ${{ secrets.SLACK_TOKEN }}
-          text: "✅ Deployment completed successfully for commit ${{ github.sha }}"
+notify:
+  runs-on: ubuntu-latest
+  needs: deploy
+  steps:
+    - name: Send Slack Notification
+      uses: slackapi/slack-github-action@v1.26.0
+      with:
+        channel-id: "C0123456789"
+        slack-token: ${{ secrets.SLACK_TOKEN }}
+        text: "✅ Deployment completed successfully for commit ${{ github.sha }}"
 ```
 
 **Explanation:**
 
-* `needs: deploy` ensures notifications are sent **after deployment**.
-* Secure token (`SLACK_TOKEN`) is stored in GitHub Secrets.
+- `needs: deploy` ensures notifications are sent **after deployment**.
+- Secure token (`SLACK_TOKEN`) is stored in GitHub Secrets.
 
 4. **Commit and Push Changes**
 
@@ -598,9 +599,9 @@ git push origin main
 
 5. **Verify Deployment**
 
-* Check Actions tab – ensure `deploy` job runs **after checks succeed**.
-* Confirm code is deployed to the target server.
-* Check Slack/email notifications are received.
+- Check Actions tab – ensure `deploy` job runs **after checks succeed**.
+- Confirm code is deployed to the target server.
+- Check Slack/email notifications are received.
 
 ✅ **Task 6 Complete** – CI/CD pipeline now includes **deployment** and **team notifications**, following secure best practices.
 
@@ -614,14 +615,14 @@ Prepare your project for public or team sharing by finalizing documentation, ver
 
 1. **Review Project Files**
 
-   * Ensure all workflows (`build.yml`, `basic-checks.yml`) are correctly configured.
-   * Confirm caching, reusable workflows, secrets, and deployment jobs are working.
-   * Verify the `README.md` is complete with all tasks and instructions.
+   - Ensure all workflows (`build.yml`, `basic-checks.yml`) are correctly configured.
+   - Confirm caching, reusable workflows, secrets, and deployment jobs are working.
+   - Verify the `README.md` is complete with all tasks and instructions.
 
 2. **Clean Up Project Directory**
 
-   * Remove any unnecessary temporary files.
-   * Ensure `.gitignore` covers `node_modules/`, logs, `.env`, or other sensitive files.
+   - Remove any unnecessary temporary files.
+   - Ensure `.gitignore` covers `node_modules/`, logs, `.env`, or other sensitive files.
 
 3. **Commit and Push Final Changes**
 
@@ -633,9 +634,9 @@ git push origin main
 
 4. **Verify Repository on GitHub**
 
-   * Go to your GitHub repository.
-   * Ensure that all files and directories are present.
-   * Check that workflows are listed under **Actions** and run correctly.
+   - Go to your GitHub repository.
+   - Ensure that all files and directories are present.
+   - Check that workflows are listed under **Actions** and run correctly.
 
 ✅ **Task 7 Complete** – Project fully documented, cleaned, and deployed on GitHub.
 
@@ -643,18 +644,17 @@ git push origin main
 
 This project demonstrated **advanced GitHub Actions concepts** including:
 
-* Modular and reusable workflows to reduce duplication.
-* Caching and parallel jobs to optimize workflow performance.
-* Secure handling of secrets and application of the least privilege principle.
-* Monitoring, auditing, and deploying workflows reliably.
+- Modular and reusable workflows to reduce duplication.
+- Caching and parallel jobs to optimize workflow performance.
+- Secure handling of secrets and application of the least privilege principle.
+- Monitoring, auditing, and deploying workflows reliably.
 
 By completing these tasks, you have created a **robust, maintainable, and secure CI/CD pipeline** that can scale for real-world software projects.
 
 ## **Author**
 
-* **Name** Olusegun Akinnola
-* **Email:** [shegezzy@gmail.com](mailto:shegezzy@gmail.com)
-* **GitHub:** [github.com/Shegezzy](https://github.com/Shegezzy)
-* **LinkedIn:** [linkedin.com/in/olusegunakinnola](https://linkedin.com/in/olusegunakinnola)
-* **Phone:** ++23481351611813
-
+- **Name** Olusegun Akinnola
+- **Email:** [shegezzy@gmail.com](mailto:shegezzy@gmail.com)
+- **GitHub:** [github.com/Shegezzy](https://github.com/Shegezzy)
+- **LinkedIn:** [linkedin.com/in/olusegunakinnola](https://linkedin.com/in/olusegunakinnola)
+- **Phone:** ++23481351611813
